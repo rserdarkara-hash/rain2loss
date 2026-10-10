@@ -1,0 +1,23 @@
+name: rain2loss
+channels:
+  - conda-forge
+dependencies:
+  - python=3.13
+  - numpy
+  - pandas
+  - scipy
+  - matplotlib
+  - xarray
+  - dask
+  - netcdf4
+  - rasterio
+  - rioxarray
+  - geopandas
+  - jupyterlab
+  - pip
+  - pip:
+      - spotpy
+      - hydroeval
+      - exactextract
+      - pysheds
+      - pyextremes
