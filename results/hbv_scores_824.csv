@@ -1,0 +1,7 @@
+model,period,NSE,KGE,r,alpha,beta,PBIAS,logNSE
+HBV (DDS),calibration,0.685,0.839,0.84,0.984,0.988,-1.233,-0.249
+HBV (DDS),validation,0.535,0.707,0.835,1.228,1.081,8.053,-0.023
+HBV (SCE-UA),calibration,0.674,0.821,0.829,0.948,0.992,-0.835,0.079
+HBV (SCE-UA),validation,0.545,0.737,0.823,1.176,1.084,8.399,0.29
+COSERO,calibration,0.74,0.77,0.862,0.817,1.015,1.485,0.714
+COSERO,validation,0.584,0.735,0.784,0.901,1.116,11.604,0.587
