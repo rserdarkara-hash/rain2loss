@@ -46,3 +46,14 @@ def evaluate(sim, obs):
     k, r, alpha, beta = kge(sim, obs, components=True)
     return {"NSE": nse(sim, obs), "KGE": k, "r": r, "alpha": alpha, "beta": beta,
             "PBIAS": pbias(sim, obs), "logNSE": log_nse(sim, obs)}
+
+def flood_extent_scores(modelled, observed):
+    """Hit rate, false alarm ratio and critical success index of two boolean flood maps."""
+    modelled = np.asarray(modelled, dtype=bool)
+    observed = np.asarray(observed, dtype=bool)
+    hits = np.sum(modelled & observed)            # wet in both
+    false_alarms = np.sum(modelled & ~observed)   # wet only in the model
+    misses = np.sum(~modelled & observed)         # wet only in the observation
+    return {"HR": hits / (hits + misses),
+            "FAR": false_alarms / (hits + false_alarms),
+            "CSI": hits / (hits + false_alarms + misses)}

@@ -1,0 +1,27 @@
+# rain2loss pipeline configuration (paths are relative to the repository root)
+gauge_id: 824
+seed: 42
+output_dir: results/run_824
+
+periods:
+  end: "2017-12-31"
+  calibration: ["1982-01-01", "2000-09-30"]
+  validation: ["2000-10-01", "2017-09-30"]
+
+hbv:
+  n_zones: 3
+  algorithm: dds          # dds or sceua
+  repetitions: 5000
+  recalibrate: false      # true = ignore the saved hbv_params.json
+
+return_periods: [2, 5, 10, 20, 50, 100, 200, 500]
+
+event_set:
+  n_years: 1000
+  storm_sigma: 0.2        # 0 or null = plain block bootstrap
+
+loss:
+  buildings: data/processed/buildings_824.gpkg
+  hazard_pattern: data/processed/jrc/jrc_rp{rp}_824.tif
+  return_periods: [10, 20, 30, 40, 50, 75, 100, 200, 500]
+  protection_rp: null     # e.g. 20 = defences hold up to the 20-year flood

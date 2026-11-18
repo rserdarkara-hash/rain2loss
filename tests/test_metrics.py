@@ -35,3 +35,13 @@ def test_missing_values_are_ignored():
     obs = np.array([1.0, np.nan, 3.0, 4.0])
     sim = np.array([1.0, 2.0, 3.0, np.nan])
     assert nse(sim, obs) == pytest.approx(1.0)
+
+
+def test_flood_extent_scores():
+    from rain2loss.metrics import flood_extent_scores
+    model = np.array([[1, 1, 0], [0, 1, 0]])
+    obs = np.array([[1, 0, 0], [0, 1, 1]])
+    scores = flood_extent_scores(model, obs)   # hits 2, false alarms 1, misses 1
+    assert scores["HR"] == pytest.approx(2 / 3)
+    assert scores["FAR"] == pytest.approx(1 / 3)
+    assert scores["CSI"] == pytest.approx(0.5)
